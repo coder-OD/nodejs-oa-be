@@ -19,6 +19,8 @@ const { decode } = require('../utils/user-jwt');
 
 // 查询任务列表
 function queryTaskList(req, res, next) {
+  console.log('req.headers.authorization', req.headers.authorization)
+  console.log('req.query.token', req.query.token)
   const err = validationResult(req);
   // 如果验证错误，empty不为空
   if (!err.isEmpty()) {
