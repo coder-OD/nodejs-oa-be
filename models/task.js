@@ -41,10 +41,10 @@ const Schema = mongoose.Schema;
 const TaskSchema = new Schema({
   title: { type: String, max: 100 },
   content: { type: String, max: 255 },
-  status: { type: Number },
-  is_major: { type: Number },
-  gmt_create: { type: Date, max: 64 },
-  gmt_modify: { type: Date, max: 64 },
+  status: { type: Number, enum: [0, 1, 2], default: 0 },
+  is_major: { type: Number, enum: [0, 1], default: 0 },
+  gmt_create: { type: Number,  default: Date.now},
+  gmt_expire: { type: Number, },
 });
 
-module.exports = mongoose.model('Task', TaskSchema);
+module.exports = mongoose.model("Task", TaskSchema);
